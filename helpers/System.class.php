@@ -33,7 +33,7 @@ class System {
         // Prepare the data for transmission to the template
         $info['text'] = $serverSettings['text'];
         if ($server !== false && ($server['online'] > -1 && $server['max_online'] != 0)) {
-            $info['percent'] = ($server['online'] >= $server['max_online']) ? 100 : $server['online'] / $server['max_online'] * 100;
+            $info['percent'] = ($server['online'] >= $server['max_online']) ? 100 : (int)($server['online'] / $server['max_online'] * 100);
             $info['status'] = ($config->get('style.status') == 1) ? $info['percent'] . '%' : $server['online'];
             if ($config->get('style.status') == 2) {
                 $info['status'] .= '/' . $server['max_online'];
